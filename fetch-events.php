@@ -1,6 +1,5 @@
 <?php
-    <script type="text/javascript" src="functions.js">
-    </script>
+   
     require_once "db.php";
 
     $json = array();

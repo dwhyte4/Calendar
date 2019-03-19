@@ -78,3 +78,14 @@ function displayMessage(message) {
 	    $(".response").html("<div class='success'>"+message+"</div>");
     setInterval(function() { $(".success").fadeOut(); }, 1000);
 }
+
+// Version 4 implementation to above 
+// Timeline Grids
+
+
+  // It appears that this is the table to structure 
+
+  // Moment plugin:  parsing, formatting, and manipulating dates
+  
+  
+
