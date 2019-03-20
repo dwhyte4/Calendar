@@ -18,6 +18,12 @@
 
 
 <script>
+//Side Notes, Basically front-end is pretty much done. There will be a couple css bits we gonna add in like selection,
+//So it hovers, though at the moment if you click the actual date it switches views which is quite cool.
+//It also does drag and drop when organising events
+// future changes would be to change the default date so that it updates to the current day, you could start on them tbh 
+// shouldn't take too much time :) and lastly get created events to be stored in the database
+
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
