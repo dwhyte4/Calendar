@@ -24,6 +24,11 @@
 // future changes would be to change the default date so that it updates to the current day, you could start on them tbh 
 // shouldn't take too much time :) and lastly get created events to be stored in the database
 
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth() +1;
+    var year = d.getFullYear();
+    var stringdate = year.toString()+'-'+month.toString()+'-'+day.toString();
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -34,7 +39,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
   },
   
-  defaultDate: '2019-03-12',
+  defaultDate: stringdate,
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true, // allow "more" link when too many events
@@ -46,57 +51,44 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
       events: [ //Lewis help me change the pre-set events to what we did over the year on the project
         {
-          title: 'All Day Event',
-          start: '2019-03-01'
+          title: 'Presentation',
+          start: '2019-05-16'
         },
         {
-          title: 'Long Event',
-          start: '2019-03-07',
-          end: '2019-03-10'
+          groupId: 12,
+          title: 'Meeting',
+          start: '2019-03-21T12:00:00',
+            end: '2019-03-21T13:00:00'
         },
         {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-03-09T16:00:00'
+          groupId: 12,
+          title: 'HCI Meeting',
+          start: '2019-03-21T11:00:00',
+            end: '2019-03-21T12:00:00'
         },
         {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-03-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2019-03-11',
-          end: '2019-03-13'
+          groupId: 12,
+          title: 'Meeting',
+          start: '2019-03-14T12:00:00',
+            end: '2019-03-14T13:00:00'
         },
         {
           title: 'Meeting',
-          start: '2019-03-12T10:30:00',
-          end: '2019-03-12T12:30:00'
+          start: '2019-03-07T11:00:00',
+            end: '2019-03-07T12:00:00'
         },
         {
-          title: 'Lunch',
-          start: '2019-03-12T12:00:00'
+          title: 'Lab',
+          start: '2019-03-21T15:00:00'
         },
         {
-          title: 'Meeting',
-          start: '2019-03-12T14:30:00'
+          title: 'HCI lecture',
+          start: '2019-03-21T13:00:00',
+          end: '2019-03-21T15:00:00'
         },
         {
-          title: 'Happy Hour',
-          start: '2019-03-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2019-03-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2019-03-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/', // You could just link it to learning central as demo
+          title: 'Check Learning Central',
+          url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
           start: '2019-03-28'
         }
       ]
