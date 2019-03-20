@@ -2,30 +2,42 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="fullcalendar/fullcalendar.min.css" />
-<link href='fullcalendar/core/main.css' rel='stylesheet' />
-<link href='fullcalendar/timeline/main.css' rel='stylesheet' />
+<meta charset='utf-8' />
+<link href='../packages/core/main.css' rel='stylesheet' />
+<link href='../packages/daygrid/main.css' rel='stylesheet' />
+<link href='../packages/timegrid/main.css' rel='stylesheet' />
+<link href='../packages/list/main.css' rel='stylesheet' />
 
 
-
+<script src='../packages/core/main.js'></script>
+<script src='../packages/interaction/main.js'></script>
+<script src='../packages/daygrid/main.js'></script>
+<script src='../packages/timegrid/main.js'></script>
+<script src='../packages/list/main.js'></script>
 <script type="text/javascript" src="functions.js"></script>
-<script src='fullcalendar/core/main.js'></script>
-<script src='fullcalendar/timeline/main.js'></script>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: [ 'interaction', 'dayGrid' ],
+    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ],
     header: {
       left: 'prevYear,prev,next,nextYear today',
       center: 'title',
-      right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
   },
+  
   defaultDate: '2019-03-12',
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true, // allow "more" link when too many events
+
+      weekNumbers: true,
+      weekNumbersWithinDays: true,
+      weekNumberCalculation: 'ISO',
+
+
       events: [ //Lewis help me change the pre-set events to what we did over the year on the project
         {
           title: 'All Day Event',
@@ -78,7 +90,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         },
         {
           title: 'Click for Google',
-          url: 'http://google.com/',
+          url: 'http://google.com/', // You could just link it to learning central as demo
           start: '2019-03-28'
         }
       ]
@@ -90,12 +102,24 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 </script>
 </head>
 <body>
+<style>
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+</style>
+
     <h2> Group Calendar</h2>
 
     <div class="response"></div>
     <div id='calendar'></div>
 </body>
-
-
 
 </html>
