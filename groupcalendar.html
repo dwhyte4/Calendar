@@ -28,7 +28,9 @@
     var day = d.getDate();
     var month = d.getMonth() +1;
     var year = d.getFullYear();
-    var stringdate = year.toString()+'-'+month.toString()+'-'+day.toString();
+    var stringdate = year.toString()+'-'+month.toString()+'-'+day.toString(); //Updates to current date via highliting 
+
+
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
