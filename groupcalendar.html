@@ -16,13 +16,13 @@
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
 <script type="text/javascript" src="functions.js"></script>
 
-
+<!-- Note to front end the style sheets are quite long so I advice inspecting element when you run the page to find things -->
+<!-- Also the functions.js hasn't actually been used so you probs don't need to check it  -->
 <script>
 //Side Notes, Basically front-end is pretty much done. There will be a couple css bits we gonna add in like selection,
 //So it hovers, though at the moment if you click the actual date it switches views which is quite cool.
 //It also does drag and drop when organising events
-// future changes would be to change the default date so that it updates to the current day, you could start on them tbh 
-// shouldn't take too much time :) and lastly get created events to be stored in the database
+// future changes would be  to get created events to be stored in the database
 
     var d = new Date();
     var day = d.getDate();
@@ -34,7 +34,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ],
+    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ], //This section is basically how the orders are arranged and what plugins were used
     header: {
       left: 'prevYear,prev,next,nextYear today',
       center: 'title',
@@ -46,12 +46,12 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       editable: true,
       eventLimit: true, // allow "more" link when too many events
 
-      weekNumbers: true,
+      weekNumbers: true, //Shows week number at the top left 
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
 
 
-      events: [ //Lewis help me change the pre-set events to what we did over the year on the project
+      events: [ //You can add and edit the preset events here 
         {
           title: 'Presentation',
           start: '2019-05-16'
@@ -89,7 +89,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           end: '2019-03-21T15:00:00'
         },
         {
-          title: 'Check Learning Central',
+          title: 'Check Learning Central', //If you want to add links this is the format you will need
           url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
           start: '2019-03-28'
         }
@@ -118,7 +118,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
     <h2> Group Calendar</h2>
 
-    <div class="response"></div>
+    <div class="response"></div> <!--please leave these two lines the way they are its meant to link to the functions.js file in future -->
     <div id='calendar'></div>
 </body>
 
