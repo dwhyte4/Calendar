@@ -3,7 +3,7 @@
     require_once "db.php";
 
     $json = array();
-    $sqlQuery = "SELECT * FROM tbl_events ORDER BY id";
+    $sqlQuery = "SELECT * FROM events_table ORDER BY id";
 
     $result = mysqli_query($conn, $sqlQuery);
     $eventArray = array();
