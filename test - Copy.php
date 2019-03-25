@@ -1,3 +1,30 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "calendar";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
+  {
+    $sql = "INSERT INTO events_table (title, start)
+        VALUES ('".$_POST['eventTitle']."', '".$_POST['eventDate']."')";
+    if (mysqli_query($conn,$sql)) {
+        echo "New event added successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+  }
+
+
+
+?>
+
+<?php  include "fetch-events.php"; ?>
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +42,8 @@
 <script src='fullcalendar-4.0.1/packages/timegrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
 <script type="text/javascript" src="functions.js"></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min
+.js'></script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -37,21 +66,20 @@
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
 
-        eventSources: [
+      dayClick: function(date, jsEvent, view) {
+        $("#successModal").modal("show");
+        $("#eventDate").val(date.format());
+      },
+      events: <?php echo json_encode($myArray); ?>
 
-    // your event source
-    {
-      url: '/fetch-events.php', // use the `url` property
-      color: 'yellow',    // an option!
-      textColor: 'black'  // an option!
-    }
-       ]
+     
   });
 
   calendar.render();
 });
 
 </script>
+
 </head>
 <body>
 <style>
@@ -68,7 +96,9 @@
 }
 
 </style>
+<div class="response"></div>
 <div id='calendar'></div>
+
 </body>
 
 </html>

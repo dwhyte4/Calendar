@@ -1,5 +1,5 @@
 <?php
-require_once "db.php";
+require_once "dbconnect.php";
 
 $id = $_POST['id'];
 $title = $_POST['title'];
