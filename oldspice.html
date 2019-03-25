@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset='utf-8' />
+<link href='fullcalendar-4.0.1/packages/core/main.css' rel='stylesheet' />
+<link href='fullcalendar-4.0.1/packages/daygrid/main.css' rel='stylesheet' />
+<link href='fullcalendar-4.0.1/packages/timegrid/main.css' rel='stylesheet' />
+<link href='fullcalendar-4.0.1/packages/list/main.css' rel='stylesheet' />
+
+
+<script src='fullcalendar-4.0.1/packages/core/main.js'></script>
+<script src='fullcalendar-4.0.1/packages/interaction/main.js'></script>
+<script src='fullcalendar-4.0.1/packages/daygrid/main.js'></script>
+<script src='fullcalendar-4.0.1/packages/timegrid/main.js'></script>
+<script src='fullcalendar-4.0.1/packages/list/main.js'></script>
+<script type="text/javascript" src="functions.js"></script>
+
+<script>
+	 document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ],
+    defaultView: 'dayGridMonth',
+    header: {
+      left: 'prevYear,prev,next,nextYear, today , addEventButton',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
+
+    var calendars = $('#calendar').fullCalendar({
+        editable: true,
+        events: "fetch-event.php",
+        displayEventTime: false,
+        eventRender: function (event, element, view) {
+            if (event.allDay === 'true') {
+                event.allDay = true;
+            } else {
+                event.allDay = false;
+            }
+        },
+        selectable: true,
+        selectHelper: true,
+        select: function (start, end, allDay) {
+            var title = prompt('Event Title:');
+
+            if (title) {
+                var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+
+                $.ajax({
+                    url: 'add-event.php',
+                    data: 'title=' + title + '&start=' + start + '&end=' + end,
+                    type: "POST",
+                    success: function (data) {
+                        displayMessage("Added Successfully");
+                    }
+                });
+                calendars.fullCalendar('renderEvent',
+                        {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        },
+                true
+                        );
+            }
+            calendars.fullCalendar('unselect');
+        },
+        
+        editable: true,
+        eventDrop: function (event, delta) {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    $.ajax({
+                        url: 'edit-event.php',
+                        data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
+                        type: "POST",
+                        success: function (response) {
+                            displayMessage("Updated Successfully");
+                        }
+                    });
+                },
+        eventClick: function (event) {
+            var deleteMsg = confirm("Do you really want to delete?");
+            if (deleteMsg) {
+                $.ajax({
+                    type: "POST",
+                    url: "delete-event.php",
+                    data: "&id=" + event.id,
+                    success: function (response) {
+                        if(parseInt(response) > 0) {
+                            $('#calendar').fullCalendar('removeEvents', event.id);
+                            displayMessage("Deleted Successfully");
+                        }
+                    }
+                });
+            }
+        }
+
+    });
+});
+
+function displayMessage(message) {
+      $(".response").html("<div class='success'>"+message+"</div>");
+    setInterval(function() { $(".success").fadeOut(); }, 1000);
+}
+
+
+      </script>
+</head>
+<body>
+<style>
+  html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+</style>
+<div id='calendar'></div>
+<div class="response"></div>
+</body>
+
+</html>

@@ -35,13 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ], //This section is basically how the orders are arranged and what plugins were used
+    defaultView: 'dayGridMonth',
     header: {
-      left: 'prevYear,prev,next,nextYear today',
+      left: 'prevYear,prev,next,nextYear, today , addEventButton',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
   },
+
+   
   
-  defaultDate: stringdate,
+  //defaultDate: stringdate,
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true, // allow "more" link when too many events
@@ -52,6 +55,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
 
       events: [ //You can add and edit the preset events here 
+      
         {
           title: 'Presentation',
           start: '2019-05-16'
@@ -93,8 +97,11 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
           start: '2019-03-28'
         }
+
       ]
+
     });
+
 
     calendar.render();
   });
