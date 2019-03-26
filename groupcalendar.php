@@ -1,3 +1,5 @@
+
+<?php  include "fetch-events.php"; ?>
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +17,8 @@
 <script src='fullcalendar-4.0.1/packages/timegrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
 <script type="text/javascript" src="functions.js"></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min
+.js'></script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -36,56 +40,24 @@
       weekNumbers: true, //Shows week number at the top left 
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
-<<<<<<< HEAD
-      
-    customButtons: {
-      addEventButton: {
-        text: 'add event...',
-        click: function() {
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          if (dateStr != ""){
-            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-          }
-          else{
-            var date = "";
-          }
-          var event = prompt("Please enter the name of your event:");
 
-          if (!isNaN(date.valueOf()) && event != "" && date != "") { // valid?
-            calendar.addEvent({
-              title: event,
-              start: date,
-              allDay: true
-            });
-            alert('Great. Now, update your database...');
-          } else if (date == "") {
-            alert('Invalid date.');
-          } else if (event == "" ) {
-            alert('Please enter a name of the event');
-          } else {
-            alert('Sorry there is an error with how your information was input')
-          }
-          
-        }
-      }
-=======
+      dayClick: function(date, jsEvent, view) {
+        $("#successModal").modal("show");
+        $("#eventDate").val(date.format());
+      },
 
-        eventSources: [
-
-    // your event source
-    {
-      url: '/fetch-events.php', // use the `url` property
-      color: 'yellow',    // an option!
-      textColor: 'black'  // an option!
->>>>>>> 523ca4dc63708916d8e3008879ff90332150a454
-    }
-       ]
+      events:<?php echo json_encode($myArray); ?>
+    
+     
+     
   });
 
   calendar.render();
 });
 
 </script>
+
+
 </head>
 <body>
 <style>
@@ -102,7 +74,9 @@
 }
 
 </style>
+<div class="response"></div>
 <div id='calendar'></div>
+
 </body>
 
 </html>
