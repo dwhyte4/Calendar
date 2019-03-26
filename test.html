@@ -42,17 +42,27 @@
         text: 'add event...',
         click: function() {
           var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+          if (dateStr != ""){
+            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+          }
+          else{
+            var date = "";
+          }
+          var event = prompt("Please enter the name of your event:");
 
-          if (!isNaN(date.valueOf())) { // valid?
+          if (!isNaN(date.valueOf()) && event != "" && date != "") { // valid?
             calendar.addEvent({
-              title: 'dynamic event',
+              title: event,
               start: date,
               allDay: true
             });
             alert('Great. Now, update your database...');
-          } else {
+          } else if (date == "") {
             alert('Invalid date.');
+          } else if (event == "" ) {
+            alert('Please enter a name of the event');
+          } else {
+            alert('Sorry there is an error with how your information was input')
           }
           
         }
