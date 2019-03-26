@@ -29,6 +29,7 @@
     var month = d.getMonth() +1;
     var year = d.getFullYear();
     var stringdate = year.toString()+'-'+month.toString()+'-'+day.toString(); //Updates to current date via highliting 
+    //Hey lewis it seems we don't actually need this peace of code
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -54,53 +55,54 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       weekNumberCalculation: 'ISO',
 
 
-      events: [ //You can add and edit the preset events here 
-      
-        {
-          title: 'Presentation',
-          start: '2019-05-16'
-        },
-        {
-          groupId: 12,
-          title: 'Meeting',
-          start: '2019-03-21T12:00:00',
-            end: '2019-03-21T13:00:00'
-        },
-        {
-          groupId: 12,
-          title: 'HCI Meeting',
-          start: '2019-03-21T11:00:00',
-            end: '2019-03-21T12:00:00'
-        },
-        {
-          groupId: 12,
-          title: 'Meeting',
-          start: '2019-03-14T12:00:00',
-            end: '2019-03-14T13:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-03-07T11:00:00',
-            end: '2019-03-07T12:00:00'
-        },
-        {
-          title: 'Lab',
-          start: '2019-03-21T15:00:00'
-        },
-        {
-          title: 'HCI lecture',
-          start: '2019-03-21T13:00:00',
-          end: '2019-03-21T15:00:00'
-        },
-        {
-          title: 'Check Learning Central', //If you want to add links this is the format you will need
-          url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
-          start: '2019-03-28'
-        }
+       events: [ //You can add and edit the preset events here 
+      {
+        url: '/fetch-events.php'
+      },
+      {
+        title: 'Presentation',
+        start: '2019-05-16'
+      },
+      {
+        groupId: 12,
+        title: 'Meeting',
+        start: '2019-03-21T12:00:00',
+          end: '2019-03-21T13:00:00'
+      },
+      {
+        groupId: 12,
+        title: 'HCI Meeting',
+        start: '2019-03-21T11:00:00',
+          end: '2019-03-21T12:00:00'
+      },
+      {
+        groupId: 12,
+        title: 'Meeting',
+        start: '2019-03-14T12:00:00',
+          end: '2019-03-14T13:00:00'
+      },
+      {
+        title: 'Meeting',
+        start: '2019-03-07T11:00:00',
+          end: '2019-03-07T12:00:00'
+      },
+      {
+        title: 'Lab',
+        start: '2019-03-21T15:00:00'
+      },
+      {
+        title: 'HCI lecture',
+        start: '2019-03-21T13:00:00',
+        end: '2019-03-21T15:00:00'
+      },
+      {
+        title: 'Check Learning Central', //If you want to add links this is the format you will need
+        url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
+        start: '2019-03-28'
+      }
 
 
-      ]
-
+    ]
    
 
     });

@@ -1,7 +1,6 @@
 <?php
    
-    require "dbconnect.php";
-  //echo "Connected successfully";
+    include "dbconnect.php";
   $sql = "SELECT * FROM events_table ";
   $result = mysqli_query($conn,$sql); 
   $myArray = array();
@@ -16,3 +15,5 @@
   {
       echo "0 results";
   }
+
+  ?>
