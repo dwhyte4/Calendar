@@ -71,7 +71,55 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
         $("#eventDate").val(date.format());
       },
 
-      events:<?php echo json_encode($myArray); ?>
+      //events:<?php// echo json_encode($myArray); ?>
+      eventSources: [ //You can add and edit the preset events here 
+      {
+        url: '/fetch-events.php'
+      },
+      {
+        title: 'Presentation',
+        start: '2019-05-16'
+      },
+      {
+        groupId: 12,
+        title: 'Meeting',
+        start: '2019-03-21T12:00:00',
+          end: '2019-03-21T13:00:00'
+      },
+      {
+        groupId: 12,
+        title: 'HCI Meeting',
+        start: '2019-03-21T11:00:00',
+          end: '2019-03-21T12:00:00'
+      },
+      {
+        groupId: 12,
+        title: 'Meeting',
+        start: '2019-03-14T12:00:00',
+          end: '2019-03-14T13:00:00'
+      },
+      {
+        title: 'Meeting',
+        start: '2019-03-07T11:00:00',
+          end: '2019-03-07T12:00:00'
+      },
+      {
+        title: 'Lab',
+        start: '2019-03-21T15:00:00'
+      },
+      {
+        title: 'HCI lecture',
+        start: '2019-03-21T13:00:00',
+        end: '2019-03-21T15:00:00'
+      },
+      {
+        title: 'Check Learning Central', //If you want to add links this is the format you will need
+        url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
+        start: '2019-03-28'
+      }
+
+
+    ]
     
      
      
