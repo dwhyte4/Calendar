@@ -1,6 +1,7 @@
 <?php
    
     include "dbconnect.php";
+    //include "test-Copy.php";
   $sql = "SELECT * FROM events_table ";
   $result = mysqli_query($conn,$sql); 
   $myArray = array();

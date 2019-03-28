@@ -71,11 +71,19 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
         $("#eventDate").val(date.format());
       },
 
-      //events:<?php// echo json_encode($myArray); ?>
+      
       eventSources: [ //You can add and edit the preset events here 
+
+      {
+        events:<?php echo json_encode($myArray); ?>
+      },
+      
       {
         url: '/fetch-events.php'
       },
+      {
+        events: [ 
+      
       {
         title: 'Presentation',
         start: '2019-05-16'
@@ -116,6 +124,8 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
         title: 'Check Learning Central', //If you want to add links this is the format you will need
         url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
         start: '2019-03-28'
+      }
+        ]
       }
 
 
