@@ -71,6 +71,38 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
         $("#eventDate").val(date.format());
       },
 
+      customButtons: {
+      addEventButton: {
+        text: 'add event...',
+        click: function() {
+          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          if (dateStr != ""){
+            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+          }
+          else{
+            var date = "";
+          }
+          var event = prompt("Please enter the name of your event:");
+
+          if (!isNaN(date.valueOf()) && event != "" && date != "") { // valid?
+            calendar.addEvent({
+              title: event,
+              start: date,
+              allDay: true
+            });
+            alert('Great. Now, update your database...');
+          } else if (date == "") {
+            alert('Invalid date.');
+          } else if (event == "" ) {
+            alert('Please enter a name of the event');
+          } else {
+            alert('Sorry there is an error with how your information was input')
+          }
+          
+        }
+      }
+    },
+
       
       eventSources: [ //You can add and edit the preset events here 
 
