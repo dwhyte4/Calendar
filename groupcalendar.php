@@ -47,6 +47,7 @@
       },
 
       events:<?php echo json_encode($myArray); ?>
+
     
      
      
