@@ -14,6 +14,7 @@
 <script src='fullcalendar-4.0.1/packages/daygrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/timegrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
+<script src='fullcalendar-4.0.1/packages/rrule/main.js'></script>
 <script type="text/javascript" src="functions.js"></script>
 
 <script>
@@ -21,7 +22,7 @@
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ],
+    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid', 'rrule' ],
     defaultView: 'dayGridMonth',
     header: {
       left: 'prevYear,prev,next,nextYear, today , addEventButton',
@@ -36,7 +37,6 @@
       weekNumbers: true, //Shows week number at the top left 
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
-<<<<<<< HEAD
       
     customButtons: {
       addEventButton: {
@@ -68,18 +68,7 @@
           
         }
       }
-=======
-
-        eventSources: [
-
-    // your event source
-    {
-      url: '/fetch-events.php', // use the `url` property
-      color: 'yellow',    // an option!
-      textColor: 'black'  // an option!
->>>>>>> 523ca4dc63708916d8e3008879ff90332150a454
     }
-       ]
   });
 
   calendar.render();
