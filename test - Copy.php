@@ -24,7 +24,9 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
 
 ?>
 
-<?php  include "fetch-events.php"; ?>
+<?php  include "fetch-events.php";
+include "add-event.php";
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -66,10 +68,7 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
 
-      dayClick: function(date, jsEvent, view) {
-        $("#successModal").modal("show");
-        $("#eventDate").val(date.format());
-      },
+     
 
       customButtons: {
       addEventButton: {
@@ -83,12 +82,16 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
             var date = "";
           }
           var event = prompt("Please enter the name of your event:");
+         
 
           if (!isNaN(date.valueOf()) && event != "" && date != "") { // valid?
             calendar.addEvent({
               title: event,
               start: date,
-              allDay: true
+              end: date,
+              allDay: false
+              
+              
             });
             alert('Great. Now, update your database...');
           } else if (date == "") {
@@ -102,6 +105,29 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
         }
       }
     },
+
+    /*selectable:true,
+    selectHelper:true,
+    select: function(start, end, allDay)
+    {
+     var title = prompt("Enter Event Title");
+     if(title)
+     {
+      var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+      $.ajax({
+       url:"insert.php",
+       type:"POST",
+       data:{title:title, start:start, end:end},
+       success:function()
+       {
+        calendar.fullCalendar('refetchEvents');
+        alert("Added Successfully");
+       }
+      })
+     }
+    },
+    */
 
       
       eventSources: [ //You can add and edit the preset events here 

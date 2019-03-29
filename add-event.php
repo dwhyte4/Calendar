@@ -1,4 +1,5 @@
 <?php
+
 require_once "dbconnect.php";
 
 $title = isset($_POST['title']) ? $_POST['title'] : "";
@@ -12,9 +13,11 @@ $result = mysqli_query($conn, $sqlInsert);
 if (! $result) {
     $result = mysqli_error($conn);
 }
+
 ?>
 
 <?php
+/*
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -37,5 +40,6 @@ if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
   }
 
 
-
+*/
 ?>
+
