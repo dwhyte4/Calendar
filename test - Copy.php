@@ -9,19 +9,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-if(isset($_POST["submit"]) == "submit" && isset($_POST["eventTitle"]) != "")
-  {
-    $sql = "INSERT INTO events_table (title, start)
-        VALUES ('".$_POST['eventTitle']."', '".$_POST['eventDate']."')";
-    if (mysqli_query($conn,$sql)) {
-        echo "New event added successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-  }
-
-
-
 ?>
 
 <?php  include "fetch-events.php";
@@ -217,6 +204,13 @@ include "add-event.php";
 </style>
 <div class="response"></div>
 <div id='calendar'></div>
+
+<form action="add-event.php" method="POST">
+  Add New event ---    Event name:<input type="text" name="title" id="eventTitle" placeholder="Enter name of the event" required>
+  Start Date:<input type="datetime" name="start" id="start" required>
+  <!--End Date:<input type="datetime-local" name="end" ><br><br>-->
+  <input type="submit" value="Submit Event">
+</form>
 
 </body>
 
