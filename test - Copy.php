@@ -135,10 +135,6 @@ include "add-event.php";
       {
         events:<?php echo json_encode($myArray); ?>
       },
-      
-      {
-        url: '/fetch-events.php'
-      },
       {
         events: [ 
       
