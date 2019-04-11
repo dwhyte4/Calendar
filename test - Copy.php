@@ -1,18 +1,12 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "calendar";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-?>
 
-<?php  include "fetch-events.php";
-include "add-event.php";
+
+<?php  
+include "fetch-events.php";
+
+include "dbconnect.php";
+
+include "edit-event.php";
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -77,10 +71,13 @@ include "add-event.php";
               start: date,
               end: date,
               allDay: false
+
+            
               
               
             });
             alert('Great. Now, update your database...');
+            
           } else if (date == "") {
             alert('Invalid date.');
           } else if (event == "" ) {
@@ -93,28 +90,38 @@ include "add-event.php";
       }
     },
 
-    /*selectable:true,
-    selectHelper:true,
-    select: function(start, end, allDay)
-    {
-     var title = prompt("Enter Event Title");
-     if(title)
-     {
-      var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-      $.ajax({
-       url:"insert.php",
-       type:"POST",
-       data:{title:title, start:start, end:end},
-       success:function()
-       {
-        calendar.fullCalendar('refetchEvents');
-        alert("Added Successfully");
-       }
-      })
-     }
-    },
-    */
+    eventClick: function (event, jsEvent, view) {
+            var title = prompt('Event Title:', event.title);
+          if (title){
+                event.title = title;
+                var start = $.fullCalendar.formatDate(event.start, "YYYY-MM-DD HH:mm:ss");
+                var end = $.fullCalendar.formatDate(event.end, "YYYY-MM-DD HH:mm:ss");
+                 $.ajax({
+                        url: base_url + "edit_event.php",
+                        data: 'title=' + title + '&start=' + start + '&end=' + end + '&id=' + event.id,
+                        type: "POST",
+                        success: function (response) {
+                            //alert("hi");
+                            displayMessage("Updated Successfully");
+                            window.location.href = base_url+"edit_event.php"
+
+                        }
+                    });
+                 calendar.fullCalendar('renderEvent',
+                        {
+                            title: title,
+                            start: start,
+                            end: end,
+                        },
+                true
+                        );
+
+          }
+           calendar.fullCalendar('unselect');
+        },
+
+        editable: true,
+
 
       
       eventSources: [ //You can add and edit the preset events here 
@@ -202,11 +209,18 @@ include "add-event.php";
 <div id='calendar'></div>
 
 <form action="add-event.php" method="POST">
-  Add New event ---    Event name:<input type="text" name="title" id="eventTitle" placeholder="Enter name of the event" required>
-  Start Date:<input type="datetime" name="start" id="start" required>
+<input type = "hidden" name = "submitted" value = "true">
+<fieldset>
+  <legend>Add New event</legend>    
+  <label>Event name:<input type="text" name="title"  placeholder="Enter name of the event" required /><label>
+  <label>Start Date:<input type="date" name="start"  required /><label>
+  <label>End Date:<input type="date" name="end"  required /><label>
+</fieldset>
+<br />  
   <!--End Date:<input type="datetime-local" name="end" ><br><br>-->
   <input type="submit" value="Submit Event">
 </form>
+
 
 </body>
 
