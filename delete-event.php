@@ -1,11 +1,12 @@
 <?php
- require_once "dbconnect.php";
+ include "dbconnect.php";
 
-$id = $_POST['id'];
-$sqlDelete = "DELETE from events_table WHERE id=".$id;
+ if(isset($_POST['title'])){
+$title = $_POST['title'];
+$sqlDelete = "DELETE from events_table WHERE title=".$title;
 
 mysqli_query($conn, $sqlDelete);
 echo mysqli_affected_rows($conn);
-
-mysqli_close($conn);
+ }
+//mysqli_close($conn);
 ?>

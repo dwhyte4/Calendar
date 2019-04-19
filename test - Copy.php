@@ -7,6 +7,8 @@ include "dbconnect.php";
 
 include "edit-event.php";
 
+include "delete-event.php";
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +29,7 @@ include "edit-event.php";
 <script type="text/javascript" src="functions.js"></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min
 .js'></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -49,78 +52,42 @@ include "edit-event.php";
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
 
-     
-
-      customButtons: {
-      addEventButton: {
-        text: 'add event...',
-        click: function() {
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          if (dateStr != ""){
-            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-          }
-          else{
-            var date = "";
-          }
-          var event = prompt("Please enter the name of your event:");
-         
-
-          if (!isNaN(date.valueOf()) && event != "" && date != "") { // valid?
-            calendar.addEvent({
-              title: event,
-              start: date,
-              end: date,
-              allDay: false
-
-            
-              
-              
-            });
-            alert('Great. Now, update your database...');
-            
-          } else if (date == "") {
-            alert('Invalid date.');
-          } else if (event == "" ) {
-            alert('Please enter a name of the event');
-          } else {
-            alert('Sorry there is an error with how your information was input')
-          }
-          
-        }
-      }
-    },
-
-    eventClick: function (event, jsEvent, view) {
-            var title = prompt('Event Title:', event.title);
-          if (title){
-                event.title = title;
-                var start = $.fullCalendar.formatDate(event.start, "YYYY-MM-DD HH:mm:ss");
-                var end = $.fullCalendar.formatDate(event.end, "YYYY-MM-DD HH:mm:ss");
-                 $.ajax({
-                        url: base_url + "edit_event.php",
-                        data: 'title=' + title + '&start=' + start + '&end=' + end + '&id=' + event.id,
+ 
+        //editable: true,
+        
+        eventDrop: function (info) {
+                    var start = moment(info.event.start).format("Y-MM-DD HH:mm:ss");
+                    var end = moment(info.event.end).format("Y-MM-DD HH:mm:ss");
+                    //var title = info.event.title;
+                    $.ajax({
+                        url: '/edit-event.php',
+                        dataType: 'json',
+                        data: { start: start, end: end /*title : title*/ },
                         type: "POST",
                         success: function (response) {
-                            //alert("hi");
                             displayMessage("Updated Successfully");
-                            window.location.href = base_url+"edit_event.php"
-
                         }
                     });
-                 calendar.fullCalendar('renderEvent',
-                        {
-                            title: title,
-                            start: start,
-                            end: end,
-                        },
-                true
-                        );
+                },
 
-          }
-           calendar.fullCalendar('unselect');
-        },
-
-        editable: true,
+                eventClick: function (info) {
+                    var deleteMsg = confirm("Do you really want to delete?");
+                    if (deleteMsg) {
+                        $.ajax({
+                            type: "POST",
+                            url: 'delete-event.php',
+                           
+                            data: { title : title },
+                            success: function (response) {
+                                if (parseInt(response) > 0) {
+                                    calendar.fullCalendar('removeEvents', info.event.title);
+                                    displayMessage("Deleted Successfully");
+                                }
+                            }
+                        });
+                    }
+                },
+   
 
 
       
