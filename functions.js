@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
     var calendar = $('#calendar').fullCalendar({
         editable: true,
         events: "fetch-event.php",
@@ -55,6 +55,7 @@ $(document).ready(function () {
                     });
                 },
         eventClick: function (event) {
+			alert("sdd");
             var deleteMsg = confirm("Do you really want to delete?");
             if (deleteMsg) {
                 $.ajax({

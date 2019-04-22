@@ -20,13 +20,12 @@ include "delete-event.php";
 <link href='fullcalendar-4.0.1/packages/timegrid/main.css' rel='stylesheet' />
 <link href='fullcalendar-4.0.1/packages/list/main.css' rel='stylesheet' />
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='fullcalendar-4.0.1/packages/core/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/interaction/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/daygrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/timegrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
-<script type="text/javascript" src="functions.js"></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min
 .js'></script>
 <script src="https://momentjs.com/downloads/moment.js"></script>
@@ -51,20 +50,18 @@ include "delete-event.php";
       weekNumbers: true, //Shows week number at the top left 
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
-
- 
-        //editable: true,
         
         eventDrop: function (info) {
                     var start = moment(info.event.start).format("Y-MM-DD HH:mm:ss");
                     var end = moment(info.event.end).format("Y-MM-DD HH:mm:ss");
-                    //var title = info.event.title;
+                    var title = info.event.title;
                     $.ajax({
-                        url: '/edit-event.php',
+                        url: 'edit-event.php',
                         dataType: 'json',
-                        data: { start: start, end: end /*title : title*/ },
+                        data: { start: start, end: end, title : title },
                         type: "POST",
                         success: function (response) {
+                          calendar.fullCalendar( info.event.title);
                             displayMessage("Updated Successfully");
                         }
                     });
@@ -72,11 +69,11 @@ include "delete-event.php";
 
                 eventClick: function (info) {
                     var deleteMsg = confirm("Do you really want to delete?");
+					var title = info.event.title;
                     if (deleteMsg) {
                         $.ajax({
                             type: "POST",
                             url: 'delete-event.php',
-                           
                             data: { title : title },
                             success: function (response) {
                                 if (parseInt(response) > 0) {
@@ -184,7 +181,6 @@ include "delete-event.php";
   <label>End Date:<input type="date" name="end"  required /><label>
 </fieldset>
 <br />  
-  <!--End Date:<input type="datetime-local" name="end" ><br><br>-->
   <input type="submit" value="Submit Event">
 </form>
 
