@@ -20,7 +20,7 @@ include "delete-event.php";
 <link href='fullcalendar-4.0.1/packages/timegrid/main.css' rel='stylesheet' />
 <link href='fullcalendar-4.0.1/packages/list/main.css' rel='stylesheet' />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src='fullcalendar-4.0.1/packages/core/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/interaction/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/daygrid/main.js'></script>
@@ -177,8 +177,8 @@ include "delete-event.php";
 <fieldset>
   <legend>Add New event</legend>    
   <label>Event name:<input type="text" name="title"  placeholder="Enter name of the event" required /><label>
-  <label>Start Date:<input type="date" name="start"  required /><label>
-  <label>End Date:<input type="date" name="end"  required /><label>
+  <label>Start Date:<input type="datetime-locale" placeholder= "YYYY-MM-DD HH:MM:SS"  name="start"  required /><label>
+  <label>End Date:<input type="datetime-locale" placeholder= "YYYY-MM-DD HH:MM:SS" name="end"  required /><label>
 </fieldset>
 <br />  
   <input type="submit" value="Submit Event">
