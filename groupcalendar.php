@@ -1,3 +1,5 @@
+
+
 <?php  
 include "fetch-events.php";
 
@@ -178,7 +180,7 @@ include "delete-event.php";
   <label>Start Date:<input type="date" name="start"  required /><label>
   <label>End Date:<input type="date" name="end"  required /><label>
 </fieldset>
-<br/>  
+<br />  
   <input type="submit" value="Submit Event">
 </form>
 
@@ -186,3 +188,4 @@ include "delete-event.php";
 </body>
 
 </html>
+	
