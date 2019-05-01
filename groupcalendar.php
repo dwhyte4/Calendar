@@ -20,7 +20,7 @@ include "delete-event.php";
 <link href='fullcalendar-4.0.1/packages/timegrid/main.css' rel='stylesheet' />
 <link href='fullcalendar-4.0.1/packages/list/main.css' rel='stylesheet' />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- important for ajax calls -->
 <script src='fullcalendar-4.0.1/packages/core/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/interaction/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/daygrid/main.js'></script>
@@ -28,7 +28,7 @@ include "delete-event.php";
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min
 .js'></script>
-<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script> <!-- important for the event drop function -->
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -62,7 +62,7 @@ include "delete-event.php";
                         type: "POST",
                         success: function (response) {
                           calendar.fullCalendar( info.event.title);
-                            displayMessage("Updated Successfully");
+                            alert("Updated Successfully");
                         }
                     });
                 },
@@ -78,7 +78,7 @@ include "delete-event.php";
                             success: function (response) {
                                 if (parseInt(response) > 0) {
                                     calendar.fullCalendar('removeEvents', info.event.title);
-                                    displayMessage("Deleted Successfully");
+                                    alert("Deleted Successfully");
                                 }
                             }
                         });
