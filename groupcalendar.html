@@ -14,6 +14,7 @@
 <script src='fullcalendar-4.0.1/packages/daygrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/timegrid/main.js'></script>
 <script src='fullcalendar-4.0.1/packages/list/main.js'></script>
+<script src='fullcalendar-4.0.1/packages/rrule/main.js'></script>
 <script type="text/javascript" src="functions.js"></script>
 
 <!-- Note to front end the style sheets are quite long so I advice inspecting element when you run the page to find things -->
@@ -29,13 +30,12 @@
     var month = d.getMonth() +1;
     var year = d.getFullYear();
     var stringdate = year.toString()+'-'+month.toString()+'-'+day.toString(); //Updates to current date via highliting 
-    //Hey lewis it seems we don't actually need this peace of code
 
 
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid' ], //This section is basically how the orders are arranged and what plugins were used
+    plugins: [ 'interaction', 'dayGrid', 'list','timeGrid', 'rrulePlugin' ], //This section is basically how the orders are arranged and what plugins were used
     defaultView: 'dayGridMonth',
     header: {
       left: 'prevYear,prev,next,nextYear, today , addEventButton',
@@ -55,55 +55,55 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
       weekNumberCalculation: 'ISO',
 
 
-       events: [ //You can add and edit the preset events here 
-      {
-        url: '/fetch-events.php'
-      },
-      {
-        title: 'Presentation',
-        start: '2019-05-16'
-      },
-      {
-        groupId: 12,
-        title: 'Meeting',
-        start: '2019-03-21T12:00:00',
-          end: '2019-03-21T13:00:00'
-      },
-      {
-        groupId: 12,
-        title: 'HCI Meeting',
-        start: '2019-03-21T11:00:00',
-          end: '2019-03-21T12:00:00'
-      },
-      {
-        groupId: 12,
-        title: 'Meeting',
-        start: '2019-03-14T12:00:00',
-          end: '2019-03-14T13:00:00'
-      },
-      {
-        title: 'Meeting',
-        start: '2019-03-07T11:00:00',
-          end: '2019-03-07T12:00:00'
-      },
-      {
-        title: 'Lab',
-        start: '2019-03-21T15:00:00'
-      },
-      {
-        title: 'HCI lecture',
-        start: '2019-03-21T13:00:00',
-        end: '2019-03-21T15:00:00'
-      },
-      {
-        title: 'Check Learning Central', //If you want to add links this is the format you will need
-        url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
-        start: '2019-03-28'
-      }
+      events: [ //You can add and edit the preset events here 
+      
+        {
+          title: 'Presentation',
+          start: '2019-05-16'
+        },
+        {
+          groupId: 12,
+          title: 'Meeting',
+          start: '2019-03-21T12:00:00',
+            end: '2019-03-21T13:00:00'
+        },
+        {
+          title: 'my recurring event',
+          rrule: 'DTSTART:20120201T103000Z\nRRULE:FREQ=WEEKLY;INTERVAL=5;UNTIL=20120601;BYDAY=MO,FR',
+        },
+        {
+          groupId: 12,
+          title: 'HCI Meeting',
+          start: '2019-03-21T11:00:00',
+            end: '2019-03-21T12:00:00'
+        },
+        {
+          groupId: 12,
+          title: 'Meeting',
+          start: '2019-03-14T12:00:00',
+            end: '2019-03-14T13:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2019-03-07T11:00:00',
+            end: '2019-03-07T12:00:00'
+        },
+        {
+          title: 'Lab',
+          start: '2019-03-21T15:00:00'
+        },
+        {
+          title: 'HCI lecture',
+          start: '2019-03-21T13:00:00',
+          end: '2019-03-21T15:00:00'
+        },
+        {
+          title: 'Check Learning Central', //If you want to add links this is the format you will need
+          url: 'https://learningcentral.cf.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_387522_1&content_id=_4631573_1&mode=reset', // You could just link it to learning central as demo
+          start: '2019-03-28'
+        }
 
-
-    ]
-   
+      ]
 
     });
 

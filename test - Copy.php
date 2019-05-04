@@ -184,6 +184,16 @@ include "delete-event.php";
   <input type="submit" value="Submit Event">
 </form>
 
+<form action="delete-event.php" method="POST">
+<input type = "hidden" name = "submitted" value = "true">
+<fieldset>
+  <legend>Delete event</legend>    
+  <label>Event name:<input type="text" name="title"  placeholder="Enter name of the event" required /><label>
+  <label>Start Date:<input type="date" name="start"  required /><label> 
+</fieldset>
+<br />  
+  <input type="submit" value="Submit Event">
+</form>
 
 </body>
 
