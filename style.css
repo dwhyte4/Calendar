@@ -1,0 +1,703 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+html {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  text-size-adjust: 100%;
+  background: url(images/trianglify.svg);background-repeat: none;background-size: 100% 100%;
+  height:100%;
+  width:100%;
+}
+
+/* Make all elements flush in their respected position*/
+p,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {
+	margin:0;
+	padding:0;
+
+}
+
+/*updated: submit button style*/
+input[type=submit] {
+  font-size: 15px;
+  font-weight: bold;
+  position: relative;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000;
+  background: #565656;
+  background: linear-gradient(#2b2b2b, #010101,#3d3d3d, #4d4d4d);
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+input[type=submit]:hover {
+  color:#FFFFFF;
+  background-color:#545454;
+  text-shadow:0 0 10px #FFFFFF;
+  border-radius:8px;
+}
+
+input[type=file]{
+  position: relative;
+  left:33px;
+}
+
+
+/*Used to make space rather than break*/
+.space { 
+	margin-top: 20px; 
+
+}
+.space2{
+	margin-top: 40px;
+}
+
+
+li {
+	list-style:none;
+}
+
+a:link,a:visited {
+	text-decoration:none;
+}
+
+/*Table styling*/
+table {  
+    color: #333; /* Lighten up font color */
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+    width: 640px; 
+  
+   
+}
+
+td, th { border: 1px solid #000000; height: 30px; padding:2px;} /* Make cells a bit taller */
+
+th {  
+    background: lightgrey; /*  grey background */
+    font-weight: bold; /* Make sure they're bold */
+}
+
+td {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: center; /* Center our text */
+}
+
+/* Top border css */
+#top {
+	position:relative;
+	width:100%;
+	height:80px;
+	background:#333;
+	background-position:center top;
+	background-repeat:none;
+	border-bottom: 1px solid black;
+}
+/* Main menu css */
+#hmenu {
+	height:100px;
+	font-family:arial;
+	font-weight:bold;
+	text-transform:uppercase;
+	font-size:11px;
+	position:relative;
+	display:inline-block;
+	border-radius:0px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:none;
+	float:right;
+	margin:20px 10px 0 0;
+}
+
+/* Change line height placement of menu buttons*/
+#hmenu > ul {
+	text-align:left;
+	line-height:40px;
+}
+
+/* Menu buttons padding*/
+#hmenu ul li {
+	float:left;
+	display:inline;
+	zoom:1;
+	position:relative;
+}
+
+#hmenu ul > li > a {
+	display:block;
+	padding:0 30px;
+}
+
+/* Keep the menu button white even when visited */
+#hmenu li a:link,#hmenu li a:visited {
+	color:#FFFFFF;
+}
+
+/* Colour when you hover over menu buttons */
+#hmenu ul li a:hover,#hmenu ul li a:active { 
+	color:#FFFFFF;
+	background-color:#545454;
+	text-shadow:0 0 10px #FFFFFF;
+	border-radius:0px;
+	border-radius:0px;
+}
+
+/* Project Name */
+#pname {
+	float:left;
+	/*background-image:url('images/LearningHubLogo.jpeg');*/
+	background-repeat:no-repeat;
+	width:300px;
+	height:80px;
+  color: white;
+  overflow: auto;
+  font-size: 22px;
+  padding-top: 7px;
+  padding-left: 4px;
+}
+#username {
+  color:white;
+  position: relative;
+  right:10px;
+}
+
+#header {
+	clear:both;
+	padding-bottom:20px;
+  position:center;
+
+}
+#content-container{
+  border-radius: 8px;
+  background: #FDFDFD;
+  box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.75);
+  animation: 3.0s fadein;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 100%;
+  padding-top:10px;
+  padding-bottom: 20px;
+}
+
+#content-container p{
+  margin-top: 20px;
+	width: 75%;
+}
+
+/* group menu Styling */
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a {
+  display:inline-block;
+  position:relative;
+  margin: 5px;
+  padding: 10px;
+  list-style: none;
+  font-weight: normal;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+#cssmenu > ul > li > a {
+  font-size: 15px;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000;
+  background: #565656;
+  background: linear-gradient(#3d3d3d, #4d4d4d);
+  border: 2px solid #000;
+  border-radius: 8px;
+  width: 100%;
+}
+#cssmenu > ul > li > a > span {
+  display: block;
+  border-radius: 4px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+#cssmenu > ul > li > a:hover {
+	color:#FFFFFF;
+	background-color:#545454;
+	text-shadow:0 0 10px #FFFFFF;
+
+}
+
+
+
+
+#cssmenu{
+	padding-bottom: 50px;
+}
+
+#footer {
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	height:70px;
+	overflow: auto;
+	background-color:#FDFCFC;
+	background-image:none;
+	background-repeat:repeat-all;
+	color:#000000;
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:12px;
+	font-style:normal;
+	text-transform:normal;
+	border-top: 1px solid grey;
+}
+
+#footer .content .col {
+	display:block;
+	float:left;
+	margin:1% 0 1% 3%;
+	width:31.33%;
+}
+
+#footer .content .col:first-child {
+	margin-left:0;
+}
+
+#footer p, #footer div {
+	line-height:auto;
+	letter-spacing:normal;
+}
+
+/* Height */
+#footer h1, #footer h2, #footer h3, #footer h4 {
+	line-height:1em;
+}
+
+/*Change title colours etc*/
+#footer h2, #footer h2 a:link, #footer h2 a:visited {
+	font-family:Helvetica, Arial, sans-serif;
+	color:#000000;
+	font-size:20px;
+	font-weight:normal;
+	font-style:normal;
+	text-transform:none;
+	letter-spacing:1.5px;
+}
+
+#footer .content {
+	position:relative;
+	width:900px;
+	margin:0 auto;
+	text-align: center;
+}
+
+/* Chat Area*/
+#chatbutton {
+  font-size: 15px;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000;
+  background: #565656;
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-weight: bold;
+  position: fixed;
+  right: 5%;
+  bottom: 0;
+  z-index: 9;
+}
+/* applies to all the message text*/
+#chatmessage{
+  font-family: 'Roboto', sans-serif;
+
+
+}
+
+/* applies to just the name and date in a message */
+#namedate{
+  color:#545454;
+}
+/* applies to the messages you send */
+
+#yourmessagetext{
+  border-radius: 50px;
+  padding: 3px;
+  background:blue;
+  color:#FFFFFF;
+}
+/* applies to just messages others send */
+#messagetext{
+  border-radius: 50px;
+  padding: 3px;
+  background:pink;
+  color:#FFFFFF;
+}
+
+.othernames{
+  	color:#545454;
+}
+
+.tooltip {
+  color: black;
+  /* Position the tooltip */
+  z-index: 1;
+ }
+
+.tooltip2{
+	color: black;
+  /* Position the tooltip */
+  z-index: 1;
+  text-align: right;
+}
+.allchat{
+	padding-bottom: 10px;
+}
+
+
+.tooltiptext {
+  font-size: 8px;
+  opacity:0;
+}
+
+
+.tooltip:hover .tooltiptext,.tooltip2:hover .tooltiptext {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+
+
+#chatbutton:hover{
+	color:#FFFFFF;
+	background-color:#545454;
+	text-shadow:0 0 10px #FFFFFF;
+}
+
+#chatForm {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 1px solid #000;
+  border-bottom: none;
+  border-radius: 8px;
+  z-index: 9;
+}
+
+.chatbox-container {
+  padding: 1px;
+  width: 350px;
+  background: white;
+  font-weight: bold;  
+}
+
+/* Set a style for the submit/send button */
+.chatbox-container .btn {
+  font-size: 10px;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000;
+  background: #565656;
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+#chatFormAbove > .cancel {
+	font-size: 10px;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000;
+  background: #565656;
+  border: 2px solid #000;
+  border-radius: 8px;
+  height: 50%;
+  font-weight: bold;
+  position: inline;
+  float: right;
+	
+}
+
+#chatFormAbove{
+  background: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  
+}
+
+#chatOutput {
+    overflow-y: auto; /*Will show slider when text goes out of area*/
+    height: 25em;
+    width: 100%;
+    border: none;
+    margin-bottom: -5px;
+}
+.userarea input{
+	width: 60%;
+  position: inline
+	
+}
+
+#chatboxInfo{
+  font-size: 10px;
+  text-align: center;
+}
+
+#username_chat{
+  top: 2px;
+  position: absolute;
+}
+#chatboxtitle{
+  top: 1px;
+}
+
+/*Login Section*/
+#loginBackground{
+	background-image: url(images/trianglify.svg);background-size: 100% 100%;
+  /*background:
+    -webkit-linear-gradient(315deg, hsla(356.26, 96.83%, 40.28%, 1) 0%, hsla(356.26, 96.83%, 40.28%, 0) 70%),
+    -webkit-linear-gradient(65deg, hsla(291.95, 95.12%, 40.8%, 1) 10%, hsla(291.95, 95.12%, 40.8%, 0) 80%),
+    -webkit-linear-gradient(135deg, hsla(258.76, 92.87%, 45.27%, 1) 15%, hsla(258.76, 92.87%, 45.27%, 0) 80%),
+    -webkit-linear-gradient(205deg, hsla(350.61, 92.08%, 43.84%, 1) 100%, hsla(350.61, 92.08%, 43.84%, 0) 70%);*/
+  /*background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);*/
+}
+
+@keyframes fadein {
+    from {opacity: 0; }
+    to   {opacity: 1; }
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+#signupLoginForm {
+    display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+  	text-align: center;
+  	min-height: 100vh;
+  	height: 30em;
+  	width: 30em;
+   	z-index: 2;
+}
+a { 
+    color: blue;
+}
+
+#signupLoginForm form {
+	border-radius: 8px;
+	background: white;
+	box-shadow: 0px 0px 41px 6px rgba(0,0,0,0.75);
+	animation: 1.5s fadein;
+  width: 30em;
+}
+
+#signupLoginForm input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+  }
+#signupLoginForm input[type=checkbox]{
+    width: 5%;
+    display: inline;
+}
+
+#signupBoxes{
+    max-width: 35%;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+#signupLoginDetails{
+	opacity: 0;
+	animation: 1s fadein forwards;
+	animation-delay: 0.25s;
+  padding: 16px;
+}
+
+ #rememberLogin{
+ 	display: block;
+ 	margin-top: 10px;
+ }
+
+#signupLoginForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 50%;
+    border: none;
+	
+  }
+
+#signupLoginForm button:hover {
+    opacity: 0.8;
+  }
+
+img.avatar {
+    border-radius: 50%;
+    margin: 24px 0 12px 0;
+    opacity: 0;
+	animation: 0.5s fadein forwards;
+	animation-delay: 0.10s;
+	filter: drop-shadow(0px 0px 10px black);
+  }
+
+img.logo {
+  border-radius: 50%;
+  size:10%;
+  padding-right: 4px;
+}
+
+#forgotLogin{
+	padding-bottom: 10px;
+}
+
+/*Calendar Section*/
+div#calendar{
+  margin:0px auto;
+  padding:0px;
+  width: 602px;
+  font-family:Helvetica, "Times New Roman", Times, serif;
+}
+ 
+div#calendar div.box{
+    position:relative;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:40px;
+    background-color:   #787878 ;       
+}
+ 
+div#calendar div.header{
+    line-height:40px;   
+    vertical-align:middle;
+    position:absolute;
+    left:11px;
+    top:0px;
+    width:582px;
+    height:40px;    
+    text-align:center;
+}
+ 
+div#calendar div.header a.prev,div#calendar div.header a.next{  
+    position:absolute;
+    top:0px;    
+    height: 17px;
+    display:block;
+    cursor:pointer; 
+    text-decoration:none;
+    color:#FFF;
+}
+ 
+div#calendar div.header span.title{
+    color:#FFF;
+    font-size:18px;
+}
+ 
+ 
+div#calendar div.header a.prev{ 
+    left:0px;
+}
+ 
+div#calendar div.header a.next{ 
+    right:0px;
+}
+ 
+div#calendar div.box-content{
+    border:1px solid #787878 ;
+    border-top:none;
+}
+ 
+div#calendar ul.label{
+    float:left;
+    margin: 0px;
+    padding: 0px;
+    margin-top:5px;
+    margin-left: 5px;
+}
+ 
+div#calendar ul.label li{
+    margin:0px;
+    padding:0px;
+    margin-right:5px;   
+    float:left;
+    list-style-type:none;
+    width:80px;
+    height:40px;
+    line-height:40px;
+    vertical-align:middle;
+    text-align:center;
+    color:#000;
+    font-size: 15px;
+    background-color: transparent;
+}
+ 
+ 
+div#calendar ul.dates{
+    float:left;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+ 
+div#calendar ul.dates li{
+    margin:0px;
+    padding:0px;
+    margin-right:5px;
+    margin-top: 5px;
+    line-height:80px;
+    vertical-align:middle;
+    float:left;
+    list-style-type:none;
+    width:80px;
+    height:80px;
+    font-size:25px;
+    background-color: #DDD;
+    color:#000;
+    text-align:center;  
+}
+
+div#calendar ul.dates :hover{
+    cursor: pointer;
+    background-color: #AAA;
+}
+
+div#calendar ul.dates :onclick{
+    cursor: pointer;
+    background-color: #66D;
+}   
+.theme {  
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin:8px;
+  border: 2px solid rgba(1, 1, 0, .2);
+}
+
+ #footer a span {display: none; position: absolute; background: #000; padding: 5px;}
+ #footer a {position: relative;}
+ #footer a:hover span {display: block;color: #fff; text-align: center; top:15px;}
+
+.Default {
+  background: grey;
+}
+
+.Deuteranopia {
+  background: #ffffde;
+}
+
+.Tritanopia {
+  background: #ab5e59;
+}
+
+.Negative {
+  background: black;
+}
+
+

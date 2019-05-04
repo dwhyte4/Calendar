@@ -14,6 +14,28 @@ include "delete-event.php";
 <html>
 
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<div id="top"> 
+        <div id="pname">
+          <p><img src="images/LearningHubLogo.jpeg" padding-right="4" height="66" alt="Logo" class="logo" align="middle">Learning hub</p>
+        </div>  
+            <div id="hmenu">            
+              <ul> 
+                <li> 
+                <a href="home.html">Home</a> 
+                </li>  
+                <li> 
+                <a href="contact.html">Contact Us</a> 
+                </li>
+                <li> 
+                <a href="groupPageNoLogin.html">My Account</a> 
+                </li>    
+              </ul> 
+            </div>  
+          <div class="clear"></div> 
+        </div>  
+
+
 <meta charset='utf-8' />
 <link href='fullcalendar-4.0.1/packages/core/main.css' rel='stylesheet' />
 <link href='fullcalendar-4.0.1/packages/daygrid/main.css' rel='stylesheet' />
@@ -171,33 +193,78 @@ include "delete-event.php";
 </style>
 <div class="response"></div>
 <div id='calendar'></div>
-
+<br />  
+<br />  
+----Click On an Event to Delete it----
+<br />  
+<br /> 
 <form action="add-event.php" method="POST">
 <input type = "hidden" name = "submitted" value = "true">
 <fieldset>
   <legend>Add New event</legend>    
   <label>Event name:<input type="text" name="title"  placeholder="Enter name of the event" required /><label>
   <label>Start Date:<input type="date" name="start"  required /><label>
+  <label>Start time:<input type="time" name="starttime"  required /><label>
   <label>End Date:<input type="date" name="end"  required /><label>
-</fieldset>
-<br />  
+  <label>End time:<input type="time" name="endtime"  required /><label>
   <input type="submit" value="Submit Event">
+</fieldset>
 </form>
-
+<br />  
+<br />  
 <form action="edit-event.php" method="POST">
 <input type = "hidden" name = "submitted" value = "true">
 <fieldset>
   <legend>Edit event</legend>    
     <label>Current Event name:<input type="text" name="title"  placeholder="Enter current name of the event" required /><label>
   <label>Current Start Date:<input type="date" name="start"  required /><label>
-  <br />--Change to--
+  <label>Current Start time:<input type="time" name="starttime"  required /><label>
+  <br />--Change to--<br />
   <label>Event name:<input type="text" name="titlenew"  placeholder="Enter new name of the event" required /><label>
   <label>Start Date:<input type="date" name="startnew"  required /><label> 
+  <label>Start time:<input type="time" name="starttimenew"  required /><label>
   <label>End Date:<input type="date" name="endnew"  required /><label>
-</fieldset>
+  <label>End time:<input type="time" name="endtimenew"  required /><label>
 <br />  
-  <input type="submit" value="Submit Event">
+  <input type="submit" value="Edit Event">
+</fieldset>
 </form>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <footer id="footer"> 
+      <div class="bg"></div>  
+      <div class="content"> 
+        <div class="group"> 
+          <div class="col span_1_of_3">   
+            <div class="vmenu"> 
+            <h2>Licence</h2>
+            Group 12 students of Cardiff University <br> 
+            Copyright © Cardiff University.
+            </div> 
+          </div>  
+          <div class="col span_1_of_3"> 
+          <h2>About Us</h2>  
+          <p>Little bit about the project -purpose of the website maybe?</p> 
+          </div>  
+          <div class="col span_1_of_3"> 
+          <h2>Contact</h2>  
+          <a> Helpmail@something.com </a>
+          </p> 
+          </div> 
+        </div>  
+        <div class="clear"></div>  
+        <div class="baseline"> 
+          <div style="float:left;margin-top:7px"> 
+          </div> 
+          </ul>  
+          <div class="clear"></div> 
+        </div> 
+      </div> 
+    </footer> 
 
 </body>
 
