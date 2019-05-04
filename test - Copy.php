@@ -192,6 +192,21 @@ include "delete-event.php";
   <label>Start Date:<input type="date" name="start"  required /><label> 
 </fieldset>
 <br />  
+  <input type="submit" value="Delete Event">
+</form>
+
+<form action="edit-event.php" method="POST">
+<input type = "hidden" name = "submitted" value = "true">
+<fieldset>
+  <legend>Edit event</legend>    
+    <label>Current Event name:<input type="text" name="title"  placeholder="Enter current name of the event" required /><label>
+  <label>Current Start Date:<input type="date" name="start"  required /><label>
+  <br />--Change to--
+  <label>Event name:<input type="text" name="titlenew"  placeholder="Enter new name of the event" required /><label>
+  <label>Start Date:<input type="date" name="startnew"  required /><label> 
+  <label>End Date:<input type="date" name="endnew"  required /><label>
+</fieldset>
+<br />  
   <input type="submit" value="Submit Event">
 </form>
 
