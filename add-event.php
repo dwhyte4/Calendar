@@ -3,8 +3,8 @@
   if(isset($_POST['submitted'])){ // checks if it actually submits  and if it does does the following below
       include"dbconnect.php";
       $title = $_POST['title'];
-      $start = $_POST['start'].' '.$_POST['starttime'].':00';
-      $end = $_POST['end'].' '.$_POST['endtime'].':00';
+      $start = $_POST['start'];
+      $end = $_POST['end'];
 
       $sql = "INSERT INTO events_table (title, start, end)
       VALUES('$title', '$start', '$end')";
@@ -16,7 +16,6 @@
       } else{
         //$success = "Entry has been successfully entered"; //PHP variable will be echoed in the html form
         echo "Entry has been successfully entered";
-          
       }
 
   }
